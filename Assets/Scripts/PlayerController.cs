@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private IInteractable interactable;
 
+    [SerializeField]
+    private int candyCount;
+
     public Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
 
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        candyCount = 0;
     }
 
     // Update is called once per frame
@@ -80,6 +84,20 @@ public class PlayerController : MonoBehaviour
                 interactable.stopInteract();
                 interactable = null;
             }
+        }
+    }
+
+    public int getCandyCount()
+    {
+        return candyCount;
+    }
+
+    public void setCandyCount(int i)
+    {
+        candyCount += i;
+        if(candyCount < 0)
+        {
+            candyCount = 0;
         }
     }
 }

@@ -36,17 +36,21 @@ public class ChestController : MonoBehaviour, IInteractable
         {
             isOpen = true;
             spriteRenderer.sprite = openSprite;
-            //Debug.Log("Opened");
             loadArrays();
-            Debug.Log("Result: " + pickTrickOrTreat().name);
+            //Debug.Log("Result: " + pickTrickOrTreat().pointsValue);
 
+            //Animation based on result
+            //Play corresponding sound
+
+            PlayerController player = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>();
+            player.setCandyCount(pickTrickOrTreat().pointsValue);
         }
     }
     
     public void stopInteract()
     {
-        isOpen = false;
-        spriteRenderer.sprite = closedSprite;
+        isOpen = true;
+        spriteRenderer.sprite = openSprite;
     }
 
     public Item pickTrickOrTreat()
@@ -77,4 +81,6 @@ public class ChestController : MonoBehaviour, IInteractable
         tricks[2] = item_6;
 
     }
+
+
 }
