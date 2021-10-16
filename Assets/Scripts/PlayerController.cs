@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     private float horizontal;
     private float vertical;
+    private IInteractable interactable;
 
     public Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("LookY", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            //Need to check if chest is nearby
+            interact();
+        }
     }
 
     void FixedUpdate()
@@ -47,5 +53,33 @@ public class PlayerController : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
 
         rigidbody2d.MovePosition(position);
+    }
+
+    public void interact()
+    {
+        if(interactable != null)
+        {
+            interactable.interact();
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collison)
+    {
+        if(collison.tag == "Chest")
+        {
+            interactable = collison.GetComponent<IInteractable>();
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collison)
+    {
+        if (collison.tag == "Chest")
+        {
+            if(interactable != null)
+            {
+                interactable.stopInteract();
+                interactable = null;
+            }
+        }
     }
 }

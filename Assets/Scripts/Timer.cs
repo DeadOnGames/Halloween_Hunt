@@ -7,6 +7,8 @@ public class Timer : MonoBehaviour
 {
     public float timeValue = 90;
     public Text timerText;
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -15,7 +17,8 @@ public class Timer : MonoBehaviour
             timeValue -= Time.deltaTime;
         } else
         {
-            // when time value runs out - end game 
+            FindObjectOfType<GameManager>().OpenEndGameScreen();
+
             timeValue = 0;
         }
         DisplayTime(timeValue);

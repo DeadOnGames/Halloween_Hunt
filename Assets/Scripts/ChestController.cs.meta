@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9656cd2cf51b5114f8a9d5ee15d0712d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spriteRenderer: {instanceID: 0}
+  - openSprite: {fileID: 21300000, guid: 078083f4143521b48a5c707e6594c2bf, type: 3}
+  - closedSprite: {fileID: 21300000, guid: 2b387ca121458d14b868a1895afe3842, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
