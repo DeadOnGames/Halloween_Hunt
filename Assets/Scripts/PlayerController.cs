@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private int candyCount;
+    private int maxCandyCount = 10;
 
     public Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
@@ -99,5 +100,6 @@ public class PlayerController : MonoBehaviour
         {
             candyCount = 0;
         }
+        CandyCounter.instance.SetValue(candyCount / (float)maxCandyCount);
     }
 }
