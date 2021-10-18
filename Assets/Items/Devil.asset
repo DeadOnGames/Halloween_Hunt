@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Devil
   m_EditorClassIdentifier: 
   name: Trick_2
-  pointsValue: -1
+  pointsValue: 0
   image: {fileID: 21300000, guid: 2961a6e4d42766846852211a4ea392c8, type: 3}
   id: 3

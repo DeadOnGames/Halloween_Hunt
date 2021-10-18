@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PumpkinMan
   m_EditorClassIdentifier: 
   name: Trick_3
-  pointsValue: -1
+  pointsValue: 0
   image: {fileID: 21300000, guid: 9522a005e90ceae429c1ca922ea1c796, type: 3}
   id: 6

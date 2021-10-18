@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            //Need to check if chest is nearby
             interact();
         }
     }
