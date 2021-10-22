@@ -16,3 +16,4 @@ MonoBehaviour:
   pointsValue: 1
   image: {fileID: 21300000, guid: 816b0b241acff4f4d9b29b88d8bf4863, type: 3}
   id: 2
+  isTreat: 1

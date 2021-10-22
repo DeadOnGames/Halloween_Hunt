@@ -9,5 +9,6 @@ public class Item : ScriptableObject
     public int pointsValue;
     public Sprite image;
     public int id;
+    public bool isTreat;
 
 }

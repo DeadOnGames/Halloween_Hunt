@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int candyCount;
     private int maxCandyCount = 10;
+    private AudioSource audioSource;
 
     public Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         candyCount = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -100,5 +102,10 @@ public class PlayerController : MonoBehaviour
             candyCount = 0;
         }
         CandyCounter.instance.SetValue(candyCount / (float)maxCandyCount);
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

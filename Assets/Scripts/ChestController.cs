@@ -18,6 +18,9 @@ public class ChestController : MonoBehaviour, IInteractable
     private int trickID;
     private Item item;
 
+    public AudioClip treatClip;
+    public AudioClip trickClip;
+
     //Tidy this up later after the game jam
     public Item item_1; //CandyCorn
     public Item item_2; //Candy
@@ -53,10 +56,7 @@ public class ChestController : MonoBehaviour, IInteractable
             item = pickTrickOrTreat();
             player.setCandyCount(item.pointsValue);
             playChestAnimation(item.id);
-
-            //Animation based on result
-
-            //Play corresponding sound
+            player.PlaySound(getTrickOrTreatClip(item));
 
             spriteRenderer.sprite = openSprite;
         }
@@ -143,6 +143,17 @@ public class ChestController : MonoBehaviour, IInteractable
                 anim.SetTrigger("PumpkinManTrigger");
                 break;
 
+        }
+    }
+
+    public AudioClip getTrickOrTreatClip(Item item)
+    {
+        if (item.isTreat)
+        {
+            return treatClip;
+        } else
+        {
+            return trickClip;
         }
     }
 }
