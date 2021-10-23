@@ -11,11 +11,6 @@ public class GameManager : MonoBehaviour
     public Text gameEndText;
     private Animator anim;
 
-    public void Start()
-    {
-        
-    }
-
     public void EndGame()
     {
         if(gameHasEnded == false)
@@ -53,7 +48,18 @@ public class GameManager : MonoBehaviour
         candyCountText.text = "Score: " + player.getCandyCount();
         if (player.getCandyCount() > 0)
         {
-            gameEndText.text = "Spooktacular effort!";
+            if (player.getCandyCount() > 0 && player.getCandyCount() < 5)
+            {
+                gameEndText.text = "Spooktacular effort";
+            }else if (player.getCandyCount() >= 5 && player.getCandyCount() < 10)
+            {
+                gameEndText.text = "Devilishly done";
+            }
+            else if(player.getCandyCount() >= 10)
+            {
+                gameEndText.text = "Frigtheningly good";
+            }
+                
         } else
         {
             gameEndText.text = "Better luck next time";

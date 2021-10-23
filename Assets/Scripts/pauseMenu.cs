@@ -46,6 +46,7 @@ public class pauseMenu : MonoBehaviour
     
     public void ReplayGame()
     {
+        Time.timeScale = 1f;
         FindObjectOfType<GameManager>().Restart();
 
     }

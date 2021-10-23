@@ -70,20 +70,36 @@ public class ChestController : MonoBehaviour, IInteractable
 
     public Item pickTrickOrTreat()
     {
-
         bool Boolean = (UnityEngine.Random.value > 0.5f);
+        int rand = UnityEngine.Random.Range(0, 1000);
+
+        //I'm using this method because Random.Range wasn't very random on its own
+        if(rand > 666)
+        {
+            rand = 0;
+        } else if (rand > 333 && rand <= 666)
+        {
+            rand = 1;
+        } else
+        {
+            rand = 2;
+        }
+
         if (Boolean == true)
         {
             //Treat
-            treatID = (UnityEngine.Random.Range(0, (treats.Length)-1));
+            treatID = rand;
+            //Debug.Log("Treat: " + treats[treatID]);
             return treats[treatID];
 
         } else
         {
             //Trick
-            trickID = (UnityEngine.Random.Range(0, (tricks.Length)-1));
+            trickID = rand;
+            //Debug.Log("Trick: " + tricks[trickID]);
             return tricks[trickID];
         }
+       
     }
 
     public void loadArrays()
