@@ -31,32 +31,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Character lookDirection
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        Vector2 move = new Vector2(horizontal, vertical);
+        Vector2 move = new Vector2(horizontal, vertical).normalized;
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
+           
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
         }
+
+        Debug.Log("lookDirection.x: " +lookDirection.x + "lookDirection.y: " + lookDirection.y);
 
         animator.SetFloat("LookX", lookDirection.x);
         animator.SetFloat("LookY", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
+        //Press X to interact with Objects
         if (Input.GetKeyDown(KeyCode.X))
         {
             interact();
         }
+
     }
 
     void FixedUpdate()
     {
+        //Character movement
         Vector2 position = rigidbody2d.position;
-        position.x = position.x + speed * horizontal * Time.deltaTime;
-        position.y = position.y + speed * vertical * Time.deltaTime;
+        Vector2 move = new Vector2(horizontal, vertical).normalized;
+        position = position + speed * Time.deltaTime * move;
 
         rigidbody2d.MovePosition(position);
     }
